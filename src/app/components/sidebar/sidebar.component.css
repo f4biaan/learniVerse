@@ -1,0 +1,25 @@
+.side-bar {
+  background-color: #888;
+  height: 100%;
+  border: 1px solid #000;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+ul li {
+  margin-bottom: 1em;
+  font-size: 1em;
+}
+
+.sub-title {
+  list-style: none;
+  margin-top: 3em;
+  padding-left: 0;
+}

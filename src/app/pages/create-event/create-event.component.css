@@ -1,0 +1,56 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select,
+.form-field option {
+  width: 700px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.form-field textarea {
+  min-width: 700px;
+  min-height: 100px;
+  margin-top: 2em;
+}
+.btns-ia input {
+  height: inherit;
+  width: inherit;
+}
+
+.btns-ia label {
+  padding: 10px;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+}
+
+.search input {
+  width: 305px;
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+}
+
+.card {
+  background: var(--white-10, #fff);
+  border-radius: 10px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.tags span {
+  border-radius: 50px;
+  background: blueviolet;
+  margin: 5px;
+  color: #fff;
+  padding: 5px;
+}
