@@ -21,6 +21,10 @@ import { TendenciasComponent } from './pages/tendencias/tendencias.component';
 import { AnaliticasComponent } from './pages/analiticas/analiticas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleTrendsComponent } from './components/google-trends/google-trends.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from 'src/environments/environment.development';
+import { getFirestore } from 'firebase/firestore';
+import { provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,8 @@ import { GoogleTrendsComponent } from './components/google-trends/google-trends.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
     BootstrapModule,
     NgxBootstrapModule,
     MaterialsModule,
