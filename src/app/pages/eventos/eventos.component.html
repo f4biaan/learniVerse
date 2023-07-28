@@ -58,30 +58,30 @@
   </table>
 </div>
 
-<!-- Card para seleccionar archivo -->
 <!-- Card externa para seleccionar archivo -->
 <div class="container archivo position-fixed top-0 start-50 translate-middle-x mt-2" *ngIf="showFileUploader">
   <div class="card carga">
-  <p class="text3">Cargar Árchivo de Asistentes</p>
-  <p class="text4">A continuación seleccione el archivo con los datos del evento, después a su realización</p>
-    <div class="card-body">
-      <!-- Card interna con el icono y el texto -->
-      <div class="card">
-        <div class="card-body text-center">
-          <label for="fileInput" class="d-block mb-3 icono1">
-            <img src="../../assets/iconos/carga-en-la-nube(1).png" alt="Seleccionar Archivo">
-          </label>
-          <p class="fs-5 mb-4 text2">Seleccionar archivo</p>
-          <input type="file" id="fileInput" (change)="onFileSelected($event)" class="form-control d-none">
-          <div *ngIf="showLoading" class="text-center">
-            <img src="../../assets/iconos/cargando.gif" alt="Cargando...">
-            <p>Cargando archivo...</p>
-          </div>
-        </div>
+    <p class="text3">Cargar Árchivo de Asistentes</p>
+    <p class="text4">A continuación seleccione el archivo con los datos del evento, después a su realización</p>
+    <div class="card-body carga1">
+      <!-- Mostrar el icono de seleccionar archivo si no se está cargando -->
+      <div *ngIf="!loadingFile">
+        <label for="fileInput" class="d-block mb-3 icono1">
+          <img src="../../assets/iconos/carga-en-la-nube(1).png" alt="Seleccionar Archivo">
+        </label>
+        <p class="fs-5 mb-4 text2">Seleccionar archivo</p>
       </div>
+      <!-- Mostrar el icono de cargando si se está cargando -->
+      <div *ngIf="loadingFile" class="text-center icono2">
+        <img src="../../assets/iconos/trabajo-en-progreso.gif" alt="Cargando...">
+        <p>Cargando archivo...</p>
+      </div>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" class="form-control d-none">
     </div>
   </div>
 </div>
+
+
 
 
 

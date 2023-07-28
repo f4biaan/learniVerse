@@ -1,18 +1,18 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css']
 })
-export class EventosComponent {
+export class EventosComponent implements OnInit {
   eventos: any[]; // Suponiendo que los eventos son de tipo any
   eventosFiltrados: any[]; // Lista de eventos filtrados por el término de búsqueda
   pageSize = 5; // Tamaño de página (puedes ajustar este valor según tus necesidades)
   currentPage = 1; // Página actual
   showLoading: boolean = false;
   showFileUploader: boolean = false; 
+  loadingFile: boolean = false;
   
 
   constructor() {
@@ -27,22 +27,35 @@ export class EventosComponent {
     ];
     this.eventosFiltrados = this.eventos; // Inicialmente, eventosFiltrados es igual a eventos
   }
+
+  ngOnInit() {
+    // Aquí ocultamos la card automáticamente al cargar el documento
+    this.showFileUploader = false;
+  }
   
   onFileSelected(event: any) {
     // Aquí puedes realizar alguna validación del archivo si lo deseas
     // Por ejemplo, puedes verificar el tipo de archivo o el tamaño.
+    
+    // Llamamos a la función para cargar el archivo
+    this.uploadFile();
   }
 
   // Función para simular la carga del archivo (puedes modificarla según tus necesidades)
   uploadFile() {
-    this.showLoading = true;
-
+    this.loadingFile = true; // Mostrar el icono de cargando
+  
     // Simulamos una carga de archivo durante 3 segundos
     setTimeout(() => {
-      this.showLoading = false;
+      this.loadingFile = false; // Ocultar el icono de cargando
+      this.showFileUploader = false; // Cerramos la card después de cargar el archivo
       // Aquí puedes realizar alguna acción adicional después de cargar el archivo
     }, 3000);
   }
+  
+  
+  
+  
 
   toggleFileUploader() {
     this.showFileUploader = !this.showFileUploader;
