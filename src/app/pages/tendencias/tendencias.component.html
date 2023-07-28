@@ -1,46 +1,69 @@
-<div class="container mt-4">
+<div class="trends mt-4">
   <h3>Tendencias</h3>
 
-  <div class="container-cards">
-    <div class="card-cont">
-      <label for="buscar">Buscar</label>
-      <input
-        type="text"
-        style="padding: 10px"
-        name="buscar"
-        id="buscar"
-        placeholder="Tendencias"
-      />
-    </div>
+  <div class="header">
+    <mat-icon class="search-icon">search</mat-icon>
+    <input
+  class="search"
+  type="text"
+  name="buscar"
+  id="buscar"
+  placeholder="Buscar tendencias"
+  (input)="onSearchChange($event)" />
+  </div>
 
-    <!-- tendencias nacionales -->
-    <div class="card-cont">
-      <h4>Tendecias Ecuador</h4>
-      <div class="items" *ngFor="let item of tendencias_nacionales">
-        <article>
-          <p>{{ item.titulo }}</p>
-        </article>
-      </div>
-
-      <!-- tendencias locales -->
-      <div class="card-cont">
-        <h4>Tendencias Locales (Loja)</h4>
-        <div class="items" *ngFor="let item of tendencias_locales">
-          <article>
-            <p>{{ item.titulo }}</p>
-          </article>
+  <div class="grid">
+    <div class="grid-child child1">
+      <h4>Tendencias Ecuador</h4>
+      <div class="items" *ngIf="tendencias_nacionales.length; else noData">
+        <div class="list-item" *ngFor="let item of tendencias_nacionales">
+          <h6>{{ item.titulo }}</h6>
+          <div class="related-words">
+            <div class="related-word"
+              *ngFor="let relatedWord of item.temasRelacionados.slice(0,2)  ">
+              {{ relatedWord }}
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- tendencias mundiales -->
-      <div class="card-cont">
-        <h4>Tendencia Globales</h4>
-        <div class="items" *ngFor="let item of tendencias_globales">
-          <article>
-            <p>{{ item.titulo }}</p>
-          </article>
+    <!-- tendencias locales -->
+    <div class="grid-child child2">
+      <h4>Tendencias Locales (Loja)</h4>
+      <div class="items" *ngIf="tendencias_locales.length; else noData">
+        <div class="list-item" *ngFor="let item of tendencias_locales">
+          <h6>{{ item.titulo }}</h6>
+          <div class="related-words">
+            <div class="related-word"
+              *ngFor="let relatedWord of item.temasRelacionados.slice(0,2)">
+              {{ relatedWord }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- tendencias mundiales -->
+    <div class="grid-child child3">
+      <h4>Tendencias Globales</h4>
+      <div class="items" *ngIf="tendencias_globales.length; else noData">
+        <div class="list-item" *ngFor="let item of tendencias_globales">
+          <h6>{{ item.titulo }}</h6>
+          <div class="related-words">
+            <div class="related-word"
+              *ngFor="let relatedWord of item.temasRelacionados.slice(0,2)">
+              {{ relatedWord }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #noData>
+  <div class="pt-4 pl-1 no-data-message">
+    No se encontraron coincidencias
+  </div>
+</ng-template>

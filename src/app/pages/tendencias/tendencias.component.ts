@@ -15,25 +15,50 @@ export class TendenciasComponent implements OnInit {
   tendencias_nacionales: Trend[] = [];
   tendencias_globales: Trend[] = [];
 
-  local_filter: Trend[] = [];
-  national_filter: Trend[] = [];
-  global_filter: Trend[] = [];
+  searchText: string = '';
 
   constructor(private firestore: FirestoreService) {}
 
   ngOnInit() {
     this.firestore.getTrends().subscribe((trends) => {
       this.trends = trends;
-      // console.log(this.trends);
-      this.tendencias_locales = this.trends.filter((trend) => {
-        return trend.ubicacion === 'local';
-      });
-      this.tendencias_nacionales = this.trends.filter((trend) => {
-        return trend.ubicacion === 'nacional';
-      });
-      this.tendencias_globales = this.trends.filter((trend) => {
-        return trend.ubicacion === 'global';
-      });
+      this.filterTrends();
     });
+  }
+
+  filterTrends() {
+    let search = this.searchText.toLowerCase();
+
+    this.tendencias_locales = this.trends.filter((trend) => {
+      return (
+        trend.ubicacion === 'local' &&
+        (trend.titulo.toLowerCase().includes(search) ||
+          trend.palabrasClave.some((word) =>
+            word.toLowerCase().includes(search)
+          ))
+      );
+    });
+
+    this.tendencias_nacionales = this.trends.filter((trend) => {
+      return (
+        trend.ubicacion === 'nacional' &&
+        (trend.titulo.toLowerCase().includes(search) ||
+        trend.palabrasClave.some(word => word.toLowerCase().includes(search)))
+      );
+    });
+    
+    this.tendencias_globales = this.trends.filter((trend) => {
+      return (
+        trend.ubicacion === 'global' &&
+        (trend.titulo.toLowerCase().includes(search) ||
+        trend.palabrasClave.some(word => word.toLowerCase().includes(search)))
+      );
+    });
+    
+  }
+
+  onSearchChange(searchValue: any): void {
+    this.searchText = searchValue.target.value;
+    this.filterTrends();
   }
 }
