@@ -2,41 +2,58 @@
   <h2 class="text1">Ingresar Ponente</h2>
 
   <!-- Sección para seleccionar imagen del ponente -->
-  <div class="form-group">
-    <label for="imagen" class="text2">Seleccionar Imagen del Ponente:</label>
-    <input type="file" id="imagen" (change)="onFileSelected($event)" class="form-control">
+ <label for="imagen" class="text2">Seleccionar Imagen del Ponente:</label>
+<div class="card">
+  <div class="card-body">
+    <div class="form-group">
+      <input type="file" id="imagen" (change)="onFileSelected($event)" class="form-control d-none">
+      <label for="imagen" class="selected-image icono">
+        <img src="../../assets/iconos/agregar-boton.png" alt="Imagen del Ponente" class="icon-image">
+      </label>
+    </div>
   </div>
+</div>
+<div class="image-preview text3" *ngIf="selectedFile">
+  <div class="delete-button">
+    <button class="btn btn-danger btn-lg icono1" (click)="borrarImagen()">
+      <img src="../../assets/iconos/eliminar.png" alt="Eliminar">
+    </button>
+  </div>
+  <div class="file-info">
+    <p>{{ selectedFile.name }}</p>
+  </div>
+</div>
 
   <!-- Formulario para ingresar datos del ponente -->
-  <div class="form-group">
-    <label for="nombres">Nombres:</label>
-    <input type="text" id="nombres" class="form-control">
+  <div class="form-group ">
+    <label for="nombres" class="text2">Nombres:</label>
+    <input type="text" id="nombres" class="form-control form1">
 
-    <label for="apellidos">Apellidos:</label>
-    <input type="text" id="apellidos" class="form-control">
+    <label for="apellidos" class="text2">Apellidos:</label>
+    <input type="text" id="apellidos" class="form-control form1">
 
-    <label for="residencia">Lugar de Residencia:</label>
-    <input type="text" id="residencia" class="form-control">
+    <label for="residencia" class="text2">Lugar de Residencia:</label>
+    <input type="text" id="residencia" class="form-control form1">
 
     <div class="row">
       <div class="col-md-6">
-        <label for="cedula">Cédula:</label>
-        <input type="text" id="cedula" class="form-control">
+        <label for="cedula" class="text2">Cédula:</label>
+        <input type="text" id="cedula" class="form-control form1">
       </div>
       <div class="col-md-6">
-        <label for="institucion">Institución de Trabajo:</label>
-        <input type="text" id="institucion" class="form-control">
+        <label for="institucion" class="text2">Institución de Trabajo:</label>
+        <input type="text" id="institucion" class="form-control form1">
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6">
-        <label for="email">Email:</label>
-        <input type="email" id="email" class="form-control">
+        <label for="email" class="text2">Email:</label>
+        <input type="email" id="email" class="form-control form1">
       </div>
       <div class="col-md-6">
-        <label for="profesion">Profesión:</label>
-        <select id="profesion" class="form-control">
+        <label for="profesion" class="text2">Profesión:</label>
+        <select id="profesion" class="form-control form1">
           <option value="opcion1">Opción 1</option>
           <option value="opcion2">Opción 2</option>
           <!-- Agrega más opciones aquí -->
@@ -44,13 +61,13 @@
       </div>
     </div>
 
-    <label for="nacionalidad">Nacionalidad:</label>
-    <input type="text" id="nacionalidad" class="form-control">
+    <label for="nacionalidad" class="text2">Nacionalidad:</label>
+    <input type="text" id="nacionalidad" class="form-control form1">
   </div>
 
   <!-- Botones para crear o cancelar -->
-  <div class="form-group text-left">
-    <button class="btn btn-primary" (click)="crearPonente()">Crear Ponente</button>
-    <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+  <div class="form-group text-right botones">
+    <button class="btn btn-primary boton1" (click)="crearPonente()">Crear Ponente</button>
+    <button class="btn btn-secondary boton2" (click)="cancelar()">Cancelar</button>
   </div>
 </div>

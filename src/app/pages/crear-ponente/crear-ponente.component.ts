@@ -6,9 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./crear-ponente.component.css']
 })
 export class CrearPonenteComponent {
+  selectedFile: File | undefined;
+  selectedFileURL: string | undefined;
+
   onFileSelected(event: any) {
-    // Aquí puedes manejar la lógica para cargar la imagen del ponente
-    // Puedes obtener el archivo seleccionado a través de event.target.files[0]
+    this.selectedFile = event.target.files[0] as File;
+    this.getBase64(this.selectedFile);
+  }
+
+  borrarImagen() {
+    this.selectedFile = undefined;
+    this.selectedFileURL = undefined;
+  }
+
+  getBase64(file: File) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.selectedFileURL = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
   crearPonente() {

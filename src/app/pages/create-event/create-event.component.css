@@ -1,3 +1,13 @@
+.trends {
+  color: #fff;
+  background-color: #1d5d9b;
+  position: fixed;
+  position: fixed;
+  width: 22em;
+  height: 100%;
+  right: 0;
+}
+
 .form-field {
   display: flex;
   flex-direction: column;
@@ -47,9 +57,13 @@
   margin-bottom: 1em;
 }
 
+.tags {
+  width: auto !important;
+  min-width: 4vh;
+}
 .tags span {
   border-radius: 50px;
-  background: blueviolet;
+  background: rgba(118, 120, 237, 0.9);
   margin: 5px;
   color: #fff;
   padding: 5px;
