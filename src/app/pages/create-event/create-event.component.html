@@ -110,8 +110,9 @@
           <option value="" disabled selected hidden>
             Perfiles filtrados de Linkedin
           </option>
-          <option value="speaker1">Rosa Palacios1</option>
-          <option value="speaker2">Denis Cuenca</option>
+          <option *ngFor="let item of speakers" value="">{{ item.name || item.nombre }}</option>
+          <!-- <option value="speaker1">Rosa Palacios1</option> -->
+          <!-- <option value="speaker2">Denis Cuenca</option> -->
         </select>
       </div>
 

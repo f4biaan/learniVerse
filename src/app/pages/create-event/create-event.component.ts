@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { FirestoreService } from 'src/app/core/services/firestore.service';
 
 @Component({
   selector: 'app-create-event',
@@ -10,9 +11,16 @@ export class CreateEventComponent implements OnInit {
   eventForm!: FormGroup;
   isChatGPT = false;
 
-  constructor() {}
+  speakers: any[] = [];
+
+  constructor(private firestore: FirestoreService) {}
 
   ngOnInit() {
+    this.firestore.getSpeakers().subscribe((speakers) => {
+      this.speakers = speakers;
+      // console.log(this.speakers);
+    });
+
     this.eventForm = new FormGroup({
       title: new FormControl('Jornada de Transformación Digital'),
       description: new FormControl(
