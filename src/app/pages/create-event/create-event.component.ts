@@ -1,6 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { FirestoreService } from 'src/app/core/services/firestore.service';
+import {
+  FirestoreService,
+  Trend,
+} from 'src/app/core/services/firestore.service';
 
 @Component({
   selector: 'app-create-event',
@@ -12,6 +15,16 @@ export class CreateEventComponent implements OnInit {
   isChatGPT = false;
 
   speakers: any[] = [];
+
+  eventos: any[] = [];
+  eventosFiltrados: any[] = [];
+  pageSize = 5;
+  currentPage = 1;
+  showLoading: boolean = false;
+  showFileUploader: boolean = false;
+  loadingFile: boolean = false;
+  trends: Trend[] = []; // Array to hold trend data from Firestore
+  stateTrends: [string, number][] = [];
 
   constructor(private firestore: FirestoreService) {}
 
@@ -34,6 +47,29 @@ export class CreateEventComponent implements OnInit {
       speaker: new FormControl(''),
       date: new FormControl('2023-08-15'),
     });
+
+    this.firestore.getTrends().subscribe((trends) => {
+      this.trends = trends;
+    });
+
+    this.getTrends();
+  }
+
+  getTrends() {
+    let count: { [key: string]: number } = {};
+    this.eventos.forEach((evento) => {
+      let state = evento.estado;
+      count[state] = (count[state] || 0) + 1;
+    });
+
+    let sortable: [string, number][] = [];
+    for (let state in count) {
+      sortable.push([state, count[state]]);
+    }
+
+    sortable.sort((a, b) => b[1] - a[1]);
+
+    this.stateTrends = sortable.slice(0, 3);
   }
 
   toggleSwitch(value: boolean) {
