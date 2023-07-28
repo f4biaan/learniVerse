@@ -1,1 +1,134 @@
-<p>eventos works!</p>
+<div class="container mt-4 contenedor ">
+<p class="text1"> Eventos </p>
+  <div class="row mb-2">
+    <div class="col">
+     <div class="col crear">
+      <!-- Botón para crear evento en la parte superior derecha -->
+        <button class="btn btn-success float-end boton1" [routerLink]="['/crear-evento']">Crear evento</button>
+    </div>
+      <!-- Filtro de búsqueda -->
+      <div class="col">
+      <!-- Filtro de búsqueda -->
+      <div class="input-group icono filtrado">
+        <span class="input-group-text lupa">
+          <img src="../../assets/iconos/lupa.png" alt="Lupa">
+        </span>
+        <input type="text" class="form-control" placeholder="Filtrar evento por nombre..." (keyup)="filtrarEventos($event)">
+        <button class="btn btn-secondary flt" (click)="filtrarEventos($event)">
+          <img src="../../assets/iconos/filtrar.png" alt="Filtrar">
+        </button>
+      </div>
+    </div>
+  </div>
+ 
+  <table class="table table-striped tabla">
+    <thead class="tabla1">
+      <tr>
+         <th class="bg-color">Evento</th>
+        <th class="bg-color">Fecha de evento</th>
+        <th class="bg-color">Ponente</th>
+        <th class="bg-color">Estado</th>
+        <th class="bg-color">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí iterarás sobre los eventos de la página actual -->
+      <tr *ngFor="let evento of obtenerEventosPaginaActual()" class="fila-transparente">
+        <td>{{ evento.nombre }}</td>
+        <td>{{ evento.fecha }}</td>
+        <td>{{ evento.ponente }}</td>
+        <td>{{ evento.estado }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm icono btn1" (click)="editarEvento(evento)">
+            <img src="../../assets/iconos/lapiz.png" alt="Editar"> <!-- Icono personalizado de lápiz -->
+          </button>
+         <button class="btn btn-secondary btn-sm icono btn1" (click)="toggleFileUploader()">
+        <img src="../../assets/iconos/subir.png" alt="Subir">
+      </button>
+
+          <button class="btn btn-info btn-sm icono btn1" (click)="enviarCorreo(evento)">
+            <img src="../../assets/iconos/enviar.png" alt="Enviar">
+          </button>
+          <button class="btn btn-danger btn-lg icono btn1" (click)="eliminarEvento(evento)">
+            <img src="../../assets/iconos/eliminar.png" alt="Eliminar">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Card para seleccionar archivo -->
+<!-- Card externa para seleccionar archivo -->
+<div class="container archivo position-fixed top-0 start-50 translate-middle-x mt-2" *ngIf="showFileUploader">
+  <div class="card carga">
+  <p class="text3">Cargar Árchivo de Asistentes</p>
+  <p class="text4">A continuación seleccione el archivo con los datos del evento, después a su realización</p>
+    <div class="card-body">
+      <!-- Card interna con el icono y el texto -->
+      <div class="card">
+        <div class="card-body text-center">
+          <label for="fileInput" class="d-block mb-3 icono1">
+            <img src="../../assets/iconos/carga-en-la-nube(1).png" alt="Seleccionar Archivo">
+          </label>
+          <p class="fs-5 mb-4 text2">Seleccionar archivo</p>
+          <input type="file" id="fileInput" (change)="onFileSelected($event)" class="form-control d-none">
+          <div *ngIf="showLoading" class="text-center">
+            <img src="../../assets/iconos/cargando.gif" alt="Cargando...">
+            <p>Cargando archivo...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Paginador dentro de un cuadro -->
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-4">
+      <!-- Flecha y texto "Mostrando X" en el lado inferior izquierdo -->
+      <div class="d-flex align-items-center">
+        <button class="btn btn-link btn-sm" [disabled]="currentPage == 1" (click)="cambiarPagina(currentPage - 1)">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+        Mostrando {{ obtenerEventosPaginaActual().length }} de {{ eventos.length }} eventos
+      </div>
+    </div>
+
+    <div class="col-4">
+      <!-- Números de página en el centro -->
+      <div class="d-flex justify-content-center">
+        <nav *ngIf="eventos.length > pageSize">
+          <ul class="pagination">
+            <li class="page-item" [class.disabled]="currentPage == 1">
+              <button class="page-link" (click)="cambiarPagina(currentPage - 1)">
+                <i class="bi bi-arrow-left"></i>
+              </button>
+            </li>
+            <li class="page-item" *ngFor="let page of paginas" [class.active]="currentPage == page">
+              <button class="page-link" (click)="cambiarPagina(page)">{{ page }}</button>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage == paginas.length">
+              <button class="page-link" (click)="cambiarPagina(currentPage + 1)">
+                <i class="bi bi-arrow-right"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <!-- Botón ir al siguiente en el lado derecho -->
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-link btn-sm" [disabled]="currentPage == paginas.length" (click)="cambiarPagina(currentPage + 1)">
+          Ir al siguiente <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

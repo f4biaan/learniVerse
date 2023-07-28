@@ -22,6 +22,7 @@ import { AnaliticasComponent } from './pages/analiticas/analiticas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleTrendsComponent } from './components/google-trends/google-trends.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { GoogleTrendsComponent } from './components/google-trends/google-trends.
     MaterialsModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
