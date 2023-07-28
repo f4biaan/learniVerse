@@ -4,16 +4,84 @@
 
 .text1{
     font-size: 1.7rem;
-    font-weight: bold;
     margin-bottom: 3rem;
 }
 
 .text2{
     font-size: 1.2rem;
-    font-weight: 600;
+    
     line-height: 20px;
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 2rem;
+    margin-left: 6rem;
 }
+
+.icono img {
+    width: 10rem;
+    height: 10rem;
+    cursor: pointer;
+}
+
+.icono1 img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.icono1 {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.card {
+    width: 16%;
+    margin-left: 6rem;
+    margin-bottom: 2rem;
+}
+
+.image-preview {
+    display: flex;
+    align-items: center;
+  }
+  
+  .delete-button {
+    margin-right: 1rem;
+  }
+
+  .file-info {
+    margin-top: 1rem;
+  }
+
+  .form1 {
+    margin-left: 6rem;
+    margin-bottom: 2rem;
+  }
+
+  .botones {
+    text-align: right;
+    margin-right: 2rem;
+    margin-bottom: 3rem;
+   
+  }
+
+  .boton1 {
+    margin-right: 2rem;
+    background-color: rgba(118, 120, 237, 1);
+    border-color: transparent;
+    font-size: 1.2rem;
+  }
+
+  .boton2 {
+    background-color: rgba(238, 42, 123, 1);
+    border-color: transparent;
+    font-size: 1.2rem;
+  }
+
+  
+  
+  
+
+
+  
+  
 
