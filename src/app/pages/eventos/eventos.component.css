@@ -1,4 +1,6 @@
 /* event-list.component.css */
+
+
 .container {
     padding-top: 7rem;
     padding-left: 2rem;
@@ -80,6 +82,7 @@
 .icono1 img {
     width: 7rem;
     height: 7rem;
+    margin-left: 12rem;
 }
 
 .text2 {
@@ -113,6 +116,17 @@ text-align: center;
     background-color: rgba(246, 246, 246, 1);
     padding: 2rem;
 }
+
+.carga1 {
+    background-color: white;
+}
+
+.icono2 img {
+    width: 7rem;
+    height: 7rem;
+}
+
+
 
 
 
