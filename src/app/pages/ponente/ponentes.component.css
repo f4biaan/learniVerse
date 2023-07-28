@@ -1,0 +1,143 @@
+/* event-list.component.css */
+
+
+.container {
+    padding-top: 7rem;
+    padding-left: 2rem;
+}
+
+.text1{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+
+.icono img {
+    /* Establecer el ancho y alto deseados para la imagen */
+    width: 2rem;
+    height: 2rem;
+}
+
+.crear {
+    margin-bottom: 5rem;
+}
+
+.boton1 {
+    background-color: rgba(30, 119, 204, 1);
+}
+
+.btn1 {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: none; /* Quits all borders */
+    border-bottom: 1px solid #ced4da; /* Adds a border only at the bottom */
+}
+  
+.input-group-text {
+    border-radius: 0.25rem 0 0 0.25rem;
+    border-right: none;
+}
+  
+.form-control {
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+  
+.filtrado {
+    margin-bottom: 3rem;
+}  
+
+.flt img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.flt {
+    background-color: transparent;
+}
+
+.lupa img {
+    width: 1.6rem;
+    height: 1.65rem;
+}
+
+.lupa {
+    background-color: transparent;
+}
+
+.archivo {
+    width: 648px;
+    height: 293px;
+    top: 80px;
+    left: 447px;
+    border-radius: 10px;
+
+}
+
+.icono1 img {
+    width: 7rem;
+    height: 7rem;
+    margin-left: 12rem;
+}
+
+.text2 {
+font-size: 14px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+.text3{
+font-size: 16px;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+.text4 {
+font-size: 13px;
+font-weight: 100;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+.carga {
+    background-color: rgba(246, 246, 246, 1);
+    padding: 2rem;
+}
+
+.carga1 {
+    background-color: white;
+}
+
+.icono2 img {
+    width: 7rem;
+    height: 7rem;
+}
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+   
