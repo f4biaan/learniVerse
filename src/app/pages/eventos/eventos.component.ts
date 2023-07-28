@@ -18,12 +18,11 @@ export class EventosComponent implements OnInit {
   constructor() {
     // Aquí obtienes los datos de los eventos (puedes hacerlo desde un servicio, API, etc.)
     this.eventos = [
-      { nombre: 'Evento 1', fecha: '2023-07-27', ponente: 'Ponente 1', estado: 'Activo' },
-      { nombre: 'Evento 2', fecha: '2023-08-10', ponente: 'Ponente 2', estado: 'Inactivo' },
-      { nombre: 'Evento 3', fecha: '2023-09-05', ponente: 'Ponente 3', estado: 'Activo' },
-      { nombre: 'Evento 4', fecha: '2023-10-15', ponente: 'Ponente 4', estado: 'En espera' },
-      { nombre: 'Evento 5', fecha: '2023-11-20', ponente: 'Ponente 5', estado: 'Activo' },
-      // ... Agrega más eventos ...
+      { nombre: 'Jornada de Transformación Digital', fecha: '2023-07-27', ponente: 'Vinod Nair', estado: 'Activo' },
+      { nombre: 'Transformaciones Tecnológicas Emergentes', fecha: '2023-08-10', ponente: 'Omar Eduardo Rodriguez', estado: 'Inactivo' },
+      { nombre: 'Hacia una educación más investigativa e innovadora', fecha: '2023-09-05', ponente: 'Ruth Margarita Zambrano Rivera', estado: 'Activo' },
+      { nombre: 'Creación de contenido digital para emprendimientos turísticos', fecha: '2023-10-15', ponente: 'María Fernández', estado: 'En espera' },
+      { nombre: 'Hacia un futuro más tecnológico', fecha: '2023-11-20', ponente: 'Daniel Enriquez', estado: 'Activo' },
     ];
     this.eventosFiltrados = this.eventos; // Inicialmente, eventosFiltrados es igual a eventos
   }
