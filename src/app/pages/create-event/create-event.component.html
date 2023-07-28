@@ -1,14 +1,13 @@
-<div class="" style="width: 100%; height: 100%; display: flex">
+<div class style="width: 100%; height: 100%; display: flex">
   <div
-    class=""
+    class
     style="
       margin-top: 7em;
       width: 100%;
       height: 100%;
       margin-right: 15em;
       margin-left: 5em;
-    "
-  >
+    ">
     <h2>Crear Evento</h2>
 
     <form [formGroup]="eventForm" class="container">
@@ -18,53 +17,46 @@
           type="text"
           formControlName="title"
           id="title"
-          placeholder="Ingrese un título"
-        />
+          placeholder="Ingrese un título" />
       </div>
       <div class="form-field">
         <label for="description">Descripción del evento</label>
         <input
           type="text"
-          formControlName=""
+          formControlName
           id="description"
-          placeholder="Descripción de la temática del evento"
-        />
+          placeholder="Descripción de la temática del evento" />
       </div>
 
       <div class="form-field">
         <div
           class="btns-ia"
-          style="display: flex; justify-content: space-between; width: 700px"
-        >
+          style="display: flex; justify-content: space-between; width: 700px">
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label
               class="btn btn-secondary p-2"
               [class.active]="!isChatGPT"
               (click)="toggleSwitch(false)"
-              style="padding: 0"
-            >
+              style="padding: 0">
               <input
                 type="radio"
                 name="options"
                 id="option1"
                 autocomplete="off"
                 checked
-                class="btn btn-secondary"
-              />
+                class="btn btn-secondary" />
               Chat GPT
             </label>
             <label
               class="btn btn-secondary p-2"
               [class.active]="isChatGPT"
               (click)="toggleSwitch(true)"
-              style="padding: 0"
-            >
+              style="padding: 0">
               <input
                 type="radio"
                 name="options"
                 id="option2"
-                autocomplete="off"
-              />
+                autocomplete="off" />
               Copy.ai
             </label>
           </div>
@@ -72,17 +64,16 @@
         </div>
         <textarea
           formControlName="description"
-          id=""
+          id
           cols="30"
           rows="10"
-          placeholder="Esperando a generar una descripción con ia"
-        ></textarea>
+          placeholder="Esperando a generar una descripción con ia"></textarea>
       </div>
 
       <div class="form-field">
         <label for="event-type">Tipo de evento</label>
         <select formControlName="eventType" id="event-type">
-          <option value="" disabled selected hidden>
+          <option value disabled selected hidden>
             Seleccionar tipo de evento
           </option>
           <option value="bootcamp" selected>Bootcamp</option>
@@ -95,8 +86,7 @@
           type="text"
           formControlName="location"
           id="location"
-          placeholder="Ingrese la ubicación del evento"
-        />
+          placeholder="Ingrese la ubicación del evento" />
       </div>
       <div class="form-field">
         <label for="speaker">Buscar ponente</label>
@@ -107,7 +97,7 @@
           placeholder="Buscando perfiles en linkedin ..."
         /> -->
         <select formControlName="speaker" id="speaker">
-          <option value="" disabled selected hidden>
+          <option value disabled selected hidden>
             Perfiles filtrados de Linkedin
           </option>
           <option value="speaker1">Rosa Palacios1</option>
@@ -128,45 +118,26 @@
   </div>
 
   <div class="trends p-3 px-4">
-    <h2>Tendencias</h2>
-    <div></div>
-    <h4>Google Trends</h4>
+    <h1>Tendencias</h1>
+    <div class="trend-section">
+      <div class="header">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input class="search" type="text" name="buscar" id="buscar"
+          placeholder="Buscar tendencias" (input)="onSearchChange($event)"/>
+      </div>
 
-    <div class="search mb-3">
-      <label for="buscar">Buscar</label>
-      <input
-        type="text"
-        style="padding: 10px"
-        name="buscar"
-        id="buscar"
-        placeholder="Tendencias"
-      />
+      <div class="tarjets">
+        <div class="card" *ngFor="let trend of trends">
+          <p>{{trend.titulo}}</p>
+          <div class="tags">
+            <div *ngFor="let tag of trend.temasRelacionados.slice(0,2)">
+              <span>{{tag}}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
-    <div class="tarjets">
-      <article class="card">
-        <p>1. Inteligencia artificial</p>
-        <div class="tags">
-          <span>IA</span>
-          <span>Data Science</span>
-        </div>
-      </article>
-      <article class="card">
-        <p>2. Ciencia de datos</p>
-        <div class="tags" style="width: 100%; right: 0">
-          <span>IA</span>
-          <span>Data Science</span>
-        </div>
-      </article>
-      <article class="card">
-        <p>3. Análisis de sentimientos</p>
-        <div class="tags">
-          <span>IA</span>
-          <span>Computación</span>
-        </div>
-      </article>
-    </div>
+    <div class></div>
   </div>
-
-  <div class=""></div>
-</div>

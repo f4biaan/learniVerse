@@ -14,15 +14,13 @@ export class TendenciasComponent implements OnInit {
   tendencias_locales: Trend[] = [];
   tendencias_nacionales: Trend[] = [];
   tendencias_globales: Trend[] = [];
-
   searchText: string = '';
 
   constructor(private firestore: FirestoreService) {}
-
-  ngOnInit() {
-    this.firestore.getTrends().subscribe((trends) => {
-      this.trends = trends;
-      this.filterTrends();
+    ngOnInit() {
+      this.firestore.getTrends().subscribe((trends) => {
+        this.trends = trends;
+        this.filterTrends();
     });
   }
 
