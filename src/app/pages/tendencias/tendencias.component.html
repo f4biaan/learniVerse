@@ -1,1 +1,46 @@
-<p>tendencias works!</p>
+<div class="container mt-4">
+  <h3>Tendencias</h3>
+
+  <div class="container-cards">
+    <div class="card-cont">
+      <label for="buscar">Buscar</label>
+      <input
+        type="text"
+        style="padding: 10px"
+        name="buscar"
+        id="buscar"
+        placeholder="Tendencias"
+      />
+    </div>
+
+    <!-- tendencias nacionales -->
+    <div class="card-cont">
+      <h4>Tendecias Ecuador</h4>
+      <div class="items" *ngFor="let item of tendencias_nacionales">
+        <article>
+          <p>{{ item.titulo }}</p>
+        </article>
+      </div>
+
+      <!-- tendencias locales -->
+      <div class="card-cont">
+        <h4>Tendencias Locales (Loja)</h4>
+        <div class="items" *ngFor="let item of tendencias_locales">
+          <article>
+            <p>{{ item.titulo }}</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- tendencias mundiales -->
+      <div class="card-cont">
+        <h4>Tendencia Globales</h4>
+        <div class="items" *ngFor="let item of tendencias_globales">
+          <article>
+            <p>{{ item.titulo }}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

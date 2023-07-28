@@ -1,0 +1,22 @@
+.container {
+  margin-left: 4em;
+}
+
+.card-cont {
+  min-width: 45%;
+  max-width: 45%;
+  height: 390px;
+  padding: 2em;
+  border: 2em;
+  background-color: #f7f7f7;
+  border-radius: 15px;
+}
+
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
