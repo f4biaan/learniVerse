@@ -1,9 +1,11 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import {
   FirestoreService,
   Trend,
 } from 'src/app/core/services/firestore.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-event',
@@ -15,6 +17,7 @@ export class CreateEventComponent implements OnInit {
   isChatGPT = false;
 
   speakers: any[] = [];
+  speakers_secondary: any[] = [];
 
   eventos: any[] = [];
   eventosFiltrados: any[] = [];
@@ -26,11 +29,26 @@ export class CreateEventComponent implements OnInit {
   trends: Trend[] = []; // Array to hold trend data from Firestore
   stateTrends: [string, number][] = [];
 
-  constructor(private firestore: FirestoreService) {}
+  constructor(private firestore: FirestoreService, private router: Router) {}
+
+  createEvent() {
+    // Swal alert with confirmation
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, crear evento',
+      cancelButtonText: 'No, cancelar',
+    }).then((result) => {
+      this.router.navigate(['/eventos']);
+    });
+  }
 
   ngOnInit() {
     this.firestore.getSpeakers().subscribe((speakers) => {
       this.speakers = speakers;
+      // this.speakers_secondary = speakers;
       // console.log(this.speakers);
     });
 
@@ -93,5 +111,37 @@ export class CreateEventComponent implements OnInit {
         clearInterval(typing);
       }
     }, this.delay);
+  }
+
+  getSpeakers() {
+    // Swañ añert to simulate loading data from linkedin que solo aprezca un segundo y se cierre
+    Swal.fire({
+      title: 'Buscando expositores...',
+      html: 'Estamos busando los mejores expositores en Linkedin',
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      // cerrar el Swañ despues de 2 segundos
+      timer: 2000,
+    });
+    let i = 0;
+    const addSpeakers = setInterval(() => {
+      if (i < this.speakers.length) {
+        this.speakers_secondary.push(this.speakers[i]);
+        i++;
+      } else {
+        clearInterval(addSpeakers);
+      }
+    }, 800);
+  }
+
+  // modal speaker
+  selectedSpeaker: any = null;
+  openModal(speaker: any) {
+    this.selectedSpeaker = speaker;
+  }
+  closeModal() {
+    this.selectedSpeaker = null;
   }
 }

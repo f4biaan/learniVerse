@@ -10,13 +10,14 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'tendencias', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'inicio', component: HomeComponent },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'inicio', component: HomeComponent },
   { path: 'tendencias', component: TendenciasComponent },
   { path: 'eventos', component: EventosComponent },
   { path: 'crear-evento', component: CreateEventComponent },
-  { path: 'ponentes', component: PonentesComponent },
-  { path: 'crear-ponente', component: CrearPonenteComponent },
+  // { path: 'ponentes', component: PonentesComponent },
+  // { path: 'crear-ponente', component: CrearPonenteComponent },
+  { path: '**', redirectTo: 'tendencias' },
 ];
 
 @NgModule({

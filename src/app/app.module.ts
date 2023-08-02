@@ -25,6 +25,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment.development';
 import { getFirestore } from 'firebase/firestore';
 import { provideFirestore } from '@angular/fire/firestore';
+import { ModalSpeakerComponent } from './components/modal-speaker/modal-speaker.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { provideFirestore } from '@angular/fire/firestore';
     TendenciasComponent,
     AnaliticasComponent,
     GoogleTrendsComponent,
+    ModalSpeakerComponent,
   ],
   imports: [
     BrowserModule,

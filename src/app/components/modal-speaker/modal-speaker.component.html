@@ -1,0 +1,6 @@
+<div *ngIf="speaker" class="modal">
+  <h1>{{speaker.name || speaker.nombre}}</h1>
+  <img [src]="speaker.img" alt="Person Photo">
+  <p>{{speaker.cv}}</p>
+  <button (click)="closeModal()">Close</button>
+</div>
