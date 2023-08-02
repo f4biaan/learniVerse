@@ -7,7 +7,8 @@
       height: 100%;
       margin-right: 15em;
       margin-left: 5em;
-    ">
+    "
+  >
     <h2>Crear Evento</h2>
 
     <form [formGroup]="eventForm" class="container">
@@ -17,7 +18,8 @@
           type="text"
           formControlName="title"
           id="title"
-          placeholder="Ingrese un título" />
+          placeholder="Ingrese un título"
+        />
       </div>
       <div class="form-field">
         <label for="description">Descripción del evento</label>
@@ -25,49 +27,61 @@
           type="text"
           formControlName
           id="description"
-          placeholder="Descripción de la temática del evento" />
+          placeholder="Descripción de la temática del evento"
+        />
       </div>
 
       <div class="form-field">
         <div
           class="btns-ia"
-          style="display: flex; justify-content: space-between; width: 700px">
+          style="display: flex; justify-content: space-between; width: 700px"
+        >
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label
               class="btn btn-secondary p-2"
               [class.active]="!isChatGPT"
               (click)="toggleSwitch(false)"
-              style="padding: 0">
+              style="padding: 0"
+            >
               <input
                 type="radio"
                 name="options"
                 id="option1"
                 autocomplete="off"
                 checked
-                class="btn btn-secondary" />
+                class="btn btn-secondary"
+              />
               Chat GPT
             </label>
             <label
               class="btn btn-secondary p-2"
               [class.active]="isChatGPT"
               (click)="toggleSwitch(true)"
-              style="padding: 0">
+              style="padding: 0"
+            >
               <input
                 type="radio"
                 name="options"
                 id="option2"
-                autocomplete="off" />
+                autocomplete="off"
+              />
               Copy.ai
             </label>
           </div>
-          <button class="btn btn-primary space-right2">Generar</button>
+          <button
+            class="btn btn-primary space-right2"
+            (click)="simulateWriting()"
+          >
+            Generar
+          </button>
         </div>
         <textarea
           formControlName="description"
           id
           cols="30"
           rows="10"
-          placeholder="Esperando a generar una descripción con ia"></textarea>
+          placeholder="Esperando a generar una descripción con ia"
+        ></textarea>
       </div>
 
       <div class="form-field">
@@ -86,7 +100,8 @@
           type="text"
           formControlName="location"
           id="location"
-          placeholder="Ingrese la ubicación del evento" />
+          placeholder="Ingrese la ubicación del evento"
+        />
       </div>
       <div class="form-field">
         <label for="speaker">Buscar ponente</label>
@@ -100,7 +115,9 @@
           <option value disabled selected hidden>
             Perfiles filtrados de Linkedin
           </option>
-          <option *ngFor="let item of speakers" value="">{{ item.name || item.nombre }}</option>
+          <option *ngFor="let item of speakers" value="">
+            {{ item.name || item.nombre }}
+          </option>
           <!-- <option value="speaker1">Rosa Palacios1</option> -->
           <!-- <option value="speaker2">Denis Cuenca</option> -->
         </select>
@@ -112,7 +129,11 @@
       </div>
 
       <div class="botones my-4">
-        <button class="btn btn-primary m-2">Crear evento</button>
+        <button class="btn btn-primary m-2">
+          <a href="eventos" style="color: #fff; text-decoration: none"
+            >Crear evento</a
+          >
+        </button>
         <button class="btn btn-secondary m-2">Cancelar</button>
       </div>
     </form>
@@ -123,22 +144,27 @@
     <div class="trend-section">
       <div class="header">
         <mat-icon class="search-icon">search</mat-icon>
-        <input class="search" type="text" name="buscar" id="buscar"
-          placeholder="Buscar tendencias"/>
+        <input
+          class="search"
+          type="text"
+          name="buscar"
+          id="buscar"
+          placeholder="Buscar tendencias"
+        />
       </div>
 
       <div class="tarjets">
         <div class="card" *ngFor="let trend of trends">
-          <p>{{trend.titulo}}</p>
+          <p>{{ trend.titulo }}</p>
           <div class="tags">
-            <div *ngFor="let tag of trend.temasRelacionados.slice(0,2)">
-              <span>{{tag}}</span>
+            <div *ngFor="let tag of trend.temasRelacionados.slice(0, 2)">
+              <span>{{ tag }}</span>
             </div>
           </div>
-
         </div>
       </div>
     </div>
 
     <div class></div>
   </div>
+</div>

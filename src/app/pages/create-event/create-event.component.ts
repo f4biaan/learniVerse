@@ -36,9 +36,7 @@ export class CreateEventComponent implements OnInit {
 
     this.eventForm = new FormGroup({
       title: new FormControl('Jornada de Transformación Digital'),
-      description: new FormControl(
-        '¡Únete a nuestra increíble Jornada de Transformación Digital! Descubre cómo la Transformación Digital está revolucionando el mundo. Ven y conoce cómo nuestros programas académicos en el campus de UTPL pueden impulsar tu futuro en la era digital.'
-      ),
+      description: new FormControl(''),
       aiOption: new FormControl('Chat GPT'),
       eventType: new FormControl('bootcamp'),
       location: new FormControl(
@@ -75,5 +73,25 @@ export class CreateEventComponent implements OnInit {
   toggleSwitch(value: boolean) {
     this.isChatGPT = value;
     this.eventForm.patchValue({ aiOption: value ? 'Copy.ai' : 'Chat GPT' });
+  }
+
+  newText: string =
+    '¡Únete a nuestra increíble Jornada de Transformación Digital! Descubre cómo la Transformación Digital está revolucionando el mundo. Ven y conoce cómo nuestros programas académicos en el campus de UTPL pueden impulsar tu futuro en la era digital.';
+  delay: number = 50; // Delay in milliseconds between each character
+
+  simulateWriting() {
+    this.eventForm.controls['description'].setValue('');
+    let i = 0;
+    const typing = setInterval(() => {
+      if (i < this.newText.length) {
+        const current = this.eventForm.controls['description'].value;
+        this.eventForm.controls['description'].patchValue(
+          current + this.newText[i]
+        );
+        i++;
+      } else {
+        clearInterval(typing);
+      }
+    }, this.delay);
   }
 }

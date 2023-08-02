@@ -9,7 +9,7 @@ import { CrearPonenteComponent } from './pages/crear-ponente/crear-ponente.compo
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: '', redirectTo: 'tendencias', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'inicio', component: HomeComponent },
   { path: 'tendencias', component: TendenciasComponent },

@@ -1,3 +1,17 @@
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: transparent !important;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
 .trends {
   color: #fff;
   background-color: #1d5d9b;
@@ -111,4 +125,7 @@
 
 h1{
   font-weight: 700 ;
-} 
+}
+
+
+
